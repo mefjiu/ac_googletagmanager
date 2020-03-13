@@ -5,4 +5,4 @@ This module add basic Google Tag Manager to Prestashop e-commerce.
 
 ## Screenshot
 
-![Screeshot of module]()
+![Screeshot of module](https://raw.githubusercontent.com/mefjiu/ac_googletagmanager/master/screenshot.jpg)
