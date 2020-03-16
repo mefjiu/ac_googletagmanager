@@ -5,21 +5,27 @@ window.dataLayer = window.dataLayer || [];
 var dataProducts = [];
 {foreach from=$products_cart item=product}
 dataProducts.push({
-    'sku' : '{$product['id_product']}',
     'name' : '{$product['name']}',
+    'id' : '{$product['id_product']}',
+    'brand' : '{$product['manufacturer_name']}',
+    'sku' : '{$product['reference']}',
     'category' : '{$product['category']}',
     'price' : '{$product['price_wt']}',
-    'quantity' : '{$product['quantity']}'
+    'quantity' : '{$product['quantity']}',
+    'coupon': ''
 });
 {/foreach}
 
 dataLayer.push({
+    'event': 'Transaction',
     'ecommerce' : {
         'purchase' : {
             'actionField' : {
                 'id': '{$order->id}',
                 'revenue' : '{$order->total_paid}',
+                'tax' : '{$order->total_paid_tax_incl - $order->total_paid_tax_excl}',
                 'shipping': '{$order->total_shipping}',
+                'coupon': ''
         	},
         	'products' : dataProducts
         }
